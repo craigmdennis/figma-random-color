@@ -1,0 +1,7 @@
+{
+  "name": "Random Color",
+  "id": "821872387409410776",
+  "api": "1.0.0",
+  "main": "dist/code.js",
+  "ui": "dist/ui.html"
+}
