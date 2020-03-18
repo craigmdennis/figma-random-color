@@ -1,22 +1,21 @@
-This plugin template uses Typescript. If you are familiar with Javascript, Typescript will
-look very familiar. In fact, valid Javascript code is already valid Typescript code.
+# Random Color Generator
+This is a Figma plugin that uses chroma-js under the hood to generate random colors for your selection.
 
-Typescript adds type annotations to variables. This allows code editors such as Visual Studio Code
-to provide information about the Figma API while you are writing code, as well as help catch bugs
-you previously didn't notice.
+## Limitations
+- Currently this only works on fills.
+- If you select a vector path or line then it will add a fill which won't be displayed as they use strokes.
 
-For more information, visit https://www.typescriptlang.org/
+## Build instructions
+First clone the repository and install the dev dependencies:
 
-Using Typescript requires a compiler to convert Typescript (code.ts) into Javascript (code.js)
-for the browser to run.
+```
+git clone git@github.com:craigmdennis/figma-random-color.git
+cd figma-random-color
+npm install
+```
 
-To get the TypeScript compiler working:
+Then compile the source files:
 
-1. Download Visual Studio Code if you haven't already: https://code.visualstudio.com/.
-2. Install the TypeScript compiler globally: `sudo npm install -g typescript`.
-3. Open this directory in Visual Studio Code.
-4. Compile TypeScript to JavaScript: Run the "Terminal > Run Build Task..." menu item,
-    then select "tsc: watch - tsconfig.json". You will have to do this again every time
-    you reopen Visual Studio Code.
-
-That's it! Visual Studio Code will regenerate the JavaScript file every time you save.
+```
+npm run watch
+```
