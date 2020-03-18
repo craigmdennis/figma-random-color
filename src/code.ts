@@ -1,43 +1,33 @@
-// This file holds the main code for the plugins. It has access to the *document*.
-// You can access browser APIs in the <script> tag inside "ui.html" which has a
-// full browser enviroment (see documentation).
-
 import chroma from '../node_modules/chroma-js/chroma'
 import clone from './clone'
 
-// This shows the HTML page in "ui.html".
-figma.showUI(__html__);
+for (const node of figma.currentPage.selection) {
 
-// Calls to "parent.postMessage" from within the HTML page will trigger this
-// callback. The callback will be passed the "pluginMessage" property of the
-// posted message.
+  if ("fills" in node) {
 
-figma.ui.onmessage = msg => {
-
-  if (msg.type === 'generate') {
-
-    for (const node of figma.currentPage.selection) {
-
-      if ("fills" in node) {
-        
-        // Get the current fills in order to clone and modify them
-        const fills = clone(node.fills);
-
-        // Get a random colour from chroma-js.
-        const random = chroma.random().gl();
-
-        // Create an array that matches the fill structure (rgb represented as 0 to 1)
-        const values = {r: random[0], g: random[1], b: random[2]};
-        
-        // Note: Needs to be on the first fill
-        // TODO: Can we remove all fills?
-        fills[0].color = values;
-        node.fills = fills;
-      }
+    // Get the current fills in order to clone and modify them
+    const fills = clone(node.fills);
+    
+    // If there are no fills then create an object to matche what would have been clonsed
+    if (Array.isArray(node.fills) && !node.fills.length) {
+      fills.push({type: "SOLID", visible: true, opacity: 1, blendMode: "NORMAL", color: {}})
     }
-  }
 
-  // Make sure to close the plugin when you're done. Otherwise the plugin will
-  // keep running, which shows the cancel button at the bottom of the screen.
-  figma.closePlugin();
-};
+    // Get a random colour from chroma-js.
+    const random = chroma.random().gl();
+
+    // Create an array that matches the fill structure (rgb represented as 0 to 1)
+    const newColor = {r: random[0], g: random[1], b: random[2]};
+    
+    // Only change the first fill
+    fills[0].color = newColor;
+
+    // Replace the fills on the node.
+    node.fills = fills;
+
+  }
+}
+
+// Make sure to close the plugin when you're done. Otherwise the plugin will
+// keep running, which shows the cancel button at the bottom of the screen.
+figma.closePlugin();

@@ -1,16 +1,19 @@
 {
-  "name": "random-colour",
+  "name": "random-color-generator",
   "version": "1.0.0",
-  "description": "This plugin template uses Typescript. If you are familiar with Javascript, Typescript will look very familiar. In fact, valid Javascript code is already valid Typescript code.",
+  "description": "Select any elements to give them a random fill.",
+  "homepage": "https://github.com/craigmdennis/figma-random-color/blob/master/README.md",
+  "bugs": "https://github.com/craigmdennis/figma-random-color/issues",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/craigmdennis/figma-random-color.git"
+  },
   "main": "code.js",
   "dependencies": {
     "chroma-js": "^2.1.0"
   },
   "devDependencies": {
     "css-loader": "^3.4.2",
-    "html-webpack-inline-source-plugin": "0.0.10",
-    "html-webpack-plugin": "^3.2.0",
-    "style-loader": "^1.1.3",
     "ts-loader": "^6.2.1",
     "typescript": "^3.8.3",
     "url-loader": "^4.0.0",
@@ -18,8 +21,10 @@
     "webpack-cli": "^3.3.11"
   },
   "scripts": {
+    "watch": "npx webpack --mode=development --watch",
+    "build": "npx webpack --mode=production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Craig Dennis",
   "license": "ISC"
 }
