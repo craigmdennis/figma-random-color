@@ -1,6 +1,11 @@
 import chroma from '../node_modules/chroma-js/chroma'
 import clone from './clone'
 
+// Display a message if nothing is selected
+if (figma.currentPage.selection.length === 0) {
+  figma.notify('Nothing selected.');
+}
+
 for (const node of figma.currentPage.selection) {
 
   if ("fills" in node) {
