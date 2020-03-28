@@ -1,5 +1,5 @@
 # Random Color Generator
-This is a Figma plugin that uses chroma-js under the hood to generate random colors for your selection.
+A Figma plugin that uses chroma-js under the hood to apply random colors to a selection.
 
 ## Limitations
 - Currently this only works on fills.
