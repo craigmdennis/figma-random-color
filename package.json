@@ -1,6 +1,6 @@
 {
   "name": "random-color-generator",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "Select any elements to give them a random fill.",
   "homepage": "https://github.com/craigmdennis/figma-random-color/blob/master/README.md",
   "bugs": "https://github.com/craigmdennis/figma-random-color/issues",
